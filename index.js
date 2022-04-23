@@ -8,12 +8,20 @@ app.use(express.json());
 
 const users = [];
 
-// const tweets = [];
+const tweets = [];
 
 app.post("/sign-up", (req, res) => {
     const {username, avatar} = req.body;
     if (!username || !avatar) return res.sendStatus(422);
     users.unshift({username, avatar});
+    res.send("OK 👍");
+});
+
+app.post("/tweets", (req, res) => {
+    const {username, tweet} = req.body;
+    if (!username || !tweet) return res.sendStatus(422);
+    const user = users.find(user => user.username===username);
+    tweets.unshift({username, tweet, avatar: user.avatar});
     res.send("OK 👍");
 });
 
