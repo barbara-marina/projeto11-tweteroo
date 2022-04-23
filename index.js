@@ -14,7 +14,7 @@ app.post("/sign-up", (req, res) => {
     const {username, avatar} = req.body;
     if (!username || !avatar) return res.status(400).send("Todos os campos são obrigatórios!");
     users.unshift({username, avatar});
-    res.send("OK 👍");
+    res.status(201).send("OK 👍");
 });
 
 app.post("/tweets", (req, res) => {
@@ -22,7 +22,7 @@ app.post("/tweets", (req, res) => {
     if (!username || !tweet) return res.status(400).send("Todos os campos são obrigatórios!");
     const user = users.find(user => user.username===username);
     tweets.unshift({username, tweet, avatar: user.avatar});
-    res.send("OK 👍");
+    res.status(201).send("OK 👍");
 });
 
 app.get("/tweets", (_req, res) => {
