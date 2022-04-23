@@ -29,4 +29,4 @@ app.get("/tweets", (req, res) => {
     res.send(tweets.slice(0, 10));
 });
 
-app.listen(5000, () => console.log(chalk.bold.cyanBright("👍")));
+app.listen(5000, () => console.log(chalk.bold.cyanBright("Server is running at port 5000 👍")));
